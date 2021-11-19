@@ -1,11 +1,11 @@
 import { DateTime } from "luxon";
 import { ReleaseType } from "./ReleaseType";
 import { UrlType } from "./UrlType";
-import * as fs from "fs";
-import { promisify } from "util";
 import { ChatUrl } from "./ChatUrl";
-
-const readFileAsync = promisify(fs.readFile);
+import ReactDOMServer from "react-dom/server";
+import React from "react";
+import { PostDataCI } from "./template/PostDataCI";
+import { PostDataRelease } from "./template/PostDataRelease";
 
 export class ReleaseWriter {
   type: ReleaseType;
@@ -17,8 +17,11 @@ export class ReleaseWriter {
   }
 
   async createCaption(): Promise<string> {
-    const file = this.type == ReleaseType.CI ? "ci.mdt" : "official.mdt";
-    const template = await readFileAsync(`assets/${file}`, "utf-8");
+    const template = ReactDOMServer.renderToStaticMarkup(
+      React.createElement(
+        this.type == ReleaseType.CI ? PostDataCI : PostDataRelease
+      )
+    );
     return this.parseData(template);
   }
 
@@ -29,10 +32,7 @@ export class ReleaseWriter {
   }
 
   get changelogs(): string[] {
-    return this.message
-      .split("\n")
-      .filter((v) => v.startsWith("- "))
-      .map((v) => v.replace(/[_*[\]()~`>#+\-=|{}.!\\]/g, "\\$&"));
+    return this.message.split("\n").filter((v) => v.startsWith("- "));
   }
 
   get urls(): ChatUrl[] {
@@ -58,6 +58,7 @@ export class ReleaseWriter {
         this.findByType(UrlType.Sourceforge)?.url || ""
       )
       .replaceAll("$date_today", DateTime.now().toFormat("MMMM dd, yyyy"))
-      .replaceAll("$list_changelog", this.changelogs.join("\n"));
+      .replaceAll("$list_changelog", this.changelogs.join("\n"))
+      .replaceAll("<br/>", "\n");
   }
 }

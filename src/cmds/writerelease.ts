@@ -25,7 +25,7 @@ rita.command("writerelease", async (ctx) => {
       source: fs.createReadStream(bannerImage),
     },
     {
-      parse_mode: "MarkdownV2",
+      parse_mode: "HTML",
       caption: caption,
     }
   );
