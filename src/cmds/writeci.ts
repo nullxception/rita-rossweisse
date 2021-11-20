@@ -1,5 +1,5 @@
-import { ReleaseType } from "../ReleaseType";
-import { ReleaseWriter } from "../ReleaseWriter";
+import { ReleaseType } from "../core/type/ReleaseType";
+import { ReleaseWriter } from "../core/ReleaseWriter";
 import { rita } from "../App";
 
 rita.command("writeci", async (ctx) => {

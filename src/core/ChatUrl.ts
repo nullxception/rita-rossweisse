@@ -1,4 +1,4 @@
-import { UrlType } from "./UrlType";
+import { UrlType } from "./type/UrlType";
 
 export class ChatUrl {
   url: string;

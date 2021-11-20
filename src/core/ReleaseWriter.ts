@@ -1,10 +1,10 @@
-import { ReleaseType } from "./ReleaseType";
-import { UrlType } from "./UrlType";
+import { ReleaseType } from "./type/ReleaseType";
+import { UrlType } from "./type/UrlType";
 import { ChatUrl } from "./ChatUrl";
 import ReactDOMServer from "react-dom/server";
 import React from "react";
-import { PostDataCI } from "./template/PostDataCI";
-import { PostDataRelease } from "./template/PostDataRelease";
+import { PostDataCI } from "../template/PostDataCI";
+import { PostDataRelease } from "../template/PostDataRelease";
 import * as fs from "fs";
 
 export class ReleaseWriter {
