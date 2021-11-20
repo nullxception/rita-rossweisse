@@ -1,4 +1,3 @@
-import { DateTime } from "luxon";
 import { ReleaseType } from "./ReleaseType";
 import { UrlType } from "./UrlType";
 import { ChatUrl } from "./ChatUrl";
@@ -69,7 +68,6 @@ export class ReleaseWriter {
         "$url_sourceforge",
         this.findByType(UrlType.Sourceforge)?.url || ""
       )
-      .replaceAll("$date_today", DateTime.now().toFormat("MMMM dd, yyyy"))
       .replaceAll("$list_changelog", this.changelogs.join("\n"))
       .replaceAll("<br/>", "\n");
   }
