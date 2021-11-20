@@ -15,11 +15,18 @@ rita.command("writeci", async (ctx) => {
   await ctx.reply("Kashikomarimashita, kanchou-sama");
   ctx.reply("Creating post...");
 
-  const writer = new ReleaseWriter(ReleaseType.CI, ctx.message.text);
-  const caption = await writer.createCaption();
-  const photo = { source: writer.banner };
-  await ctx.replyWithPhoto(photo, {
-    parse_mode: "HTML",
-    caption: caption,
-  });
+  try {
+    const writer = new ReleaseWriter(ReleaseType.CI, ctx.message.text);
+    const caption = await writer.createCaption();
+    const photo = { source: writer.banner };
+    await ctx.replyWithPhoto(photo, {
+      parse_mode: "HTML",
+      caption: caption,
+    });
+  } catch (err) {
+    ctx.reply(
+      "Gomennasai, kanchou-sama,\nI can't complete the task.\nHere's the error log:"
+    );
+    ctx.reply(String(err));
+  }
 });
