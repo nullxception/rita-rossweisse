@@ -1,11 +1,9 @@
 import { ReleaseType } from "../ReleaseType";
 import { ReleaseWriter } from "../ReleaseWriter";
 import { rita } from "../App";
-import * as fs from "fs";
 
 rita.command("writeci", async (ctx) => {
   const firstName = ctx.message.from.first_name;
-  const bannerImage = process.env.BANNER_CI || "assets/banner-ci.png";
 
   if (ctx.message.from.username != "nullxception") {
     ctx.reply(
@@ -19,13 +17,9 @@ rita.command("writeci", async (ctx) => {
 
   const writer = new ReleaseWriter(ReleaseType.CI, ctx.message.text);
   const caption = await writer.createCaption();
-  await ctx.replyWithPhoto(
-    {
-      source: fs.createReadStream(bannerImage),
-    },
-    {
-      parse_mode: "HTML",
-      caption: caption,
-    }
-  );
+  const photo = { source: writer.banner };
+  await ctx.replyWithPhoto(photo, {
+    parse_mode: "HTML",
+    caption: caption,
+  });
 });

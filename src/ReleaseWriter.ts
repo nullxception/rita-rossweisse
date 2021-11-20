@@ -6,6 +6,7 @@ import ReactDOMServer from "react-dom/server";
 import React from "react";
 import { PostDataCI } from "./template/PostDataCI";
 import { PostDataRelease } from "./template/PostDataRelease";
+import * as fs from "fs";
 
 export class ReleaseWriter {
   type: ReleaseType;
@@ -43,6 +44,17 @@ export class ReleaseWriter {
         )
         ?.map((it) => new ChatUrl(it)) || []
     );
+  }
+
+  get banner(): string {
+    const imgCI = process.env.BANNER_CI || "assets/banner-ci.png";
+    const imgRel = process.env.BANNER_RELEASE || "assets/banner-official.png";
+    const img = this.type == ReleaseType.CI ? imgCI : imgRel;
+    if (!fs.existsSync(img)) {
+      throw new Error(`${img} does not exists`);
+    }
+
+    return img;
   }
 
   findByType(type: UrlType) {
