@@ -24,7 +24,7 @@ rita.command("writeci", async (ctx) => {
       caption: caption,
     });
   } catch (err) {
-    ctx.reply(
+    await ctx.reply(
       "Gomennasai, kanchou-sama,\nI can't complete the task.\nHere's the error log:"
     );
     ctx.reply(String(err));

@@ -23,7 +23,7 @@ rita.command("writerelease", async (ctx) => {
       caption: caption,
     });
   } catch (err) {
-    ctx.reply(
+    await ctx.reply(
       "Gomennasai, kanchou-sama, I can't complete the task.\nHere's the error log:"
     );
     ctx.reply(String(err));
