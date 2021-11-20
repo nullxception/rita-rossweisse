@@ -17,7 +17,7 @@ rita.command("writerelease", async (ctx) => {
   try {
     const writer = new ReleaseWriter(ReleaseType.CI, ctx.message.text);
     const caption = await writer.createCaption();
-    const photo = { source: writer.banner };
+    const photo = { source: writer.data.banner };
     await ctx.replyWithPhoto(photo, {
       parse_mode: "HTML",
       caption: caption,
