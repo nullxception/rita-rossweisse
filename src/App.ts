@@ -6,7 +6,7 @@ dotenv.config();
 export const rita = new Telegraf(process.env.BOT_TOKEN || "");
 
 // Commands
-require("./cmds/start");
+require("./cmds/general");
 require("./cmds/writeci");
 require("./cmds/writerelease");
 
