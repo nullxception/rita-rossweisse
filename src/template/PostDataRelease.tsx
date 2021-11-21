@@ -6,7 +6,12 @@ import { UrlType } from "../core/type/UrlType";
 export const PostDataRelease: React.FC<TemplateProps> = ({
   data,
 }: TemplateProps) => {
-  const dateNow = DateTime.now().toFormat("MMMM dd, yyyy");
+  let dateNow = DateTime.now().toFormat("MMMM dd, yyyy");
+  if (data.customDate != "") {
+    dateNow = DateTime.fromFormat(data.customDate, "yyyyMMdd").toFormat(
+      "MMMM dd, yyyy"
+    );
+  }
   return (
     <>
       <br />
@@ -30,7 +35,7 @@ export const PostDataRelease: React.FC<TemplateProps> = ({
       <br />• Custom vendor
       <br />• GApps Included
       <br />• SELinux Enforced
-      <br />• SafetyNet Passed by default \(non\-root\)
+      <br />• SafetyNet Passed by default (non-root)
       <br />
       <br />
       #StayDerped

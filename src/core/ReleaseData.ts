@@ -43,6 +43,14 @@ export class ReleaseData {
     return img;
   }
 
+  get customDate(): string {
+    return (
+      this.message
+        .match(/(\d{4}\d{2}\d{2})/gm)
+        ?.find((it) => it.startsWith("20")) || ""
+    );
+  }
+
   urlExists(type: UrlType) {
     return this.urls?.find((it) => it.type == type) != undefined;
   }

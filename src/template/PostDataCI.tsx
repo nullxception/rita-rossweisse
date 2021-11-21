@@ -7,7 +7,12 @@ import { Changelogs } from "./components/changelogs";
 export const PostDataCI: React.FC<TemplateProps> = ({
   data,
 }: TemplateProps) => {
-  const dateNow = DateTime.now().toFormat("MMMM dd, yyyy");
+  let dateNow = DateTime.now().toFormat("MMMM dd, yyyy");
+  if (data.customDate != "") {
+    dateNow = DateTime.fromFormat(data.customDate, "yyyyMMdd").toFormat(
+      "MMMM dd, yyyy"
+    );
+  }
   return (
     <>
       <br />
