@@ -6,14 +6,18 @@ import { PostDataRelease } from "../template/PostDataRelease";
 import { ReleaseData } from "./ReleaseData";
 
 export class ReleaseWriter {
-  type: ReleaseType;
   message: string;
   data: ReleaseData;
 
-  constructor(type: ReleaseType, message: string) {
-    this.type = type;
+  constructor(message: string) {
     this.message = message;
     this.data = new ReleaseData(this.type, this.message);
+  }
+
+  get type(): ReleaseType {
+    return this.message.match(/( ci | official)/gim)?.[0]?.includes("off")
+      ? ReleaseType.Official
+      : ReleaseType.CI;
   }
 
   async createCaption(): Promise<string> {

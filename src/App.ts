@@ -7,8 +7,7 @@ export const rita = new Telegraf(process.env.BOT_TOKEN || "");
 
 // Commands
 require("./cmds/general");
-require("./cmds/writeci");
-require("./cmds/writerelease");
+require("./cmds/releasepost");
 
 // Start rita
 rita.launch();

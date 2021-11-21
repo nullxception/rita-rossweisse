@@ -1,8 +1,7 @@
-import { ReleaseType } from "../core/type/ReleaseType";
 import { ReleaseWriter } from "../core/ReleaseWriter";
 import { rita } from "../App";
 
-rita.command("writeci", async (ctx) => {
+rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
   const firstName = ctx.message.from.first_name;
 
   if (ctx.message.from.username != "nullxception") {
@@ -16,7 +15,7 @@ rita.command("writeci", async (ctx) => {
   ctx.reply("Creating post...");
 
   try {
-    const writer = new ReleaseWriter(ReleaseType.CI, ctx.message.text);
+    const writer = new ReleaseWriter(ctx.message.text);
     const caption = await writer.createCaption();
     const photo = { source: writer.data.banner };
     await ctx.replyWithPhoto(photo, {
