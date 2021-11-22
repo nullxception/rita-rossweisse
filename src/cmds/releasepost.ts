@@ -2,7 +2,7 @@ import { ReleaseWriter } from "../core/ReleaseWriter";
 import { rita } from "../App";
 
 rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
-  if (ctx.message.from.username != "nullxception") return;
+  if (ctx.update.message.from.username != "nullxception") return;
 
   await ctx.reply("Kashikomarimashita, kanchou-sama");
   ctx.reply("Creating post...");
