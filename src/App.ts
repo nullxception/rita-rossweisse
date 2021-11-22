@@ -3,7 +3,12 @@ import { Telegraf } from "telegraf";
 
 dotenv.config();
 
-export const rita = new Telegraf(process.env.BOT_TOKEN || "");
+const token = process.env.BOT_TOKEN;
+if (token === undefined) {
+  throw new Error("BOT_TOKEN must be provided!");
+}
+
+export const rita = new Telegraf(token);
 
 // Commands
 require("./cmds/general");
