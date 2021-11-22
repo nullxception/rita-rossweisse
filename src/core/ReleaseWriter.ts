@@ -20,7 +20,7 @@ export class ReleaseWriter {
       : ReleaseType.CI;
   }
 
-  async createCaption(): Promise<string> {
+  caption(): string {
     const template = ReactDOMServer.renderToStaticMarkup(
       React.createElement(
         this.type == ReleaseType.CI ? PostDataCI : PostDataRelease,

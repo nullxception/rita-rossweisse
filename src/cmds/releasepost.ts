@@ -9,7 +9,7 @@ rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
 
   try {
     const writer = new ReleaseWriter(ctx.message.text);
-    const caption = await writer.createCaption();
+    const caption = writer.caption();
     const photo = { source: writer.data.banner };
     await ctx.replyWithPhoto(photo, {
       parse_mode: "HTML",
