@@ -2,6 +2,7 @@ import { DateTime } from "luxon";
 import React from "react";
 import { TemplateProps } from "../core/TemplateProps";
 import { UrlType } from "../core/type/UrlType";
+import { Changelogs } from "./components/changelogs";
 
 export const PostDataRelease: React.FC<TemplateProps> = ({
   data,
@@ -22,8 +23,7 @@ export const PostDataRelease: React.FC<TemplateProps> = ({
       By @fryevia x @nullxception
       <br />
       <br />
-      <b>Changelog</b>
-      <br />• <a href={data.urlOf(UrlType.Gist)}>Gist</a>
+      <Changelogs data={data} />
       <br />
       <br />
       <b>Download</b>

@@ -23,9 +23,8 @@ export const PostDataCI: React.FC<TemplateProps> = ({
       By @fryevia x @nullxception
       <br />
       <br />
-      <b>Changelog</b>
-      <br />
       <Changelogs data={data} />
+      <br />
       <br />
       <b>Download</b>
       <br />• <a href={data.urlOf(UrlType.Gdrive)}>Google Drive</a>

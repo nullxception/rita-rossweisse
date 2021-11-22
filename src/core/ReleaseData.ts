@@ -12,12 +12,6 @@ export class ReleaseData {
     this.message = message;
   }
 
-  get hasChangelog(): boolean {
-    return (
-      this.message.split("\n").filter((v) => v.startsWith("- ")).length != 0
-    );
-  }
-
   get changelogs(): string[] {
     return this.message.split("\n").filter((v) => v.startsWith("- "));
   }
