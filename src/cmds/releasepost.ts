@@ -4,7 +4,9 @@ import { rita } from "../App";
 rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
   if (ctx.update.message.from.username != "nullxception") return;
 
-  await ctx.reply("Kashikomarimashita, kanchou-sama");
+  await ctx.reply("Kashikomarimashita, kanchou-sama", {
+    reply_to_message_id: ctx.update.message.message_id,
+  });
   ctx.reply("Creating post...");
 
   try {
@@ -17,7 +19,10 @@ rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
     });
   } catch (err) {
     await ctx.reply(
-      "Gomennasai, kanchou-sama,\nI can't complete the task.\nHere's the error log:"
+      "Gomennasai, kanchou-sama,\nI can't complete the task.\nHere's the error log:",
+      {
+        reply_to_message_id: ctx.update.message.message_id,
+      }
     );
     ctx.reply(String(err));
   }

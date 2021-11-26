@@ -8,5 +8,7 @@ rita.start((ctx) => {
 rita.hears(/hey rita,.*(a.+|)r.*(y.+|)u ther/gim, async (ctx) => {
   if (ctx.update.message.from.username != "nullxception") return;
 
-  ctx.reply(`at your service, kanchou-sama`);
+  ctx.reply(`at your service, kanchou-sama`, {
+    reply_to_message_id: ctx.update.message.message_id,
+  });
 });
