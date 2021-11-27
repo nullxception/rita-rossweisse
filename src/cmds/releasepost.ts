@@ -1,8 +1,8 @@
 import { ReleaseWriter } from "../core/ReleaseWriter";
-import { rita } from "../App";
+import { rita, username } from "../App";
 
 rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
-  if (ctx.update.message.from.username != "nullxception") return;
+  if (ctx.update.message.from.username != username) return;
 
   await ctx.reply("Kashikomarimashita, kanchou-sama", {
     reply_to_message_id: ctx.update.message.message_id,

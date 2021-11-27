@@ -8,6 +8,7 @@ if (token === undefined) {
   throw new Error("BOT_TOKEN must be provided!");
 }
 
+export const username = process.env.KANCHOU_USERNAME ?? "";
 export const rita = new Telegraf(token);
 
 // Commands

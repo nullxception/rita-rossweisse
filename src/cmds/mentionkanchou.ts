@@ -1,8 +1,9 @@
-import { rita } from "../App";
+import { rita, username } from "../App";
 import fs from "fs";
 import path from "path";
 
-rita.hears(/.*@nullxception.*/gim, (ctx) => {
+const userMatch = new RegExp(`.*@${username}.*`, "gim");
+rita.hears(userMatch, (ctx) => {
   try {
     const friendlist = fs
       .readFileSync(path.resolve(__dirname, "../assets/data.friends.txt"))
