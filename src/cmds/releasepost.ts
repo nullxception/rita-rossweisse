@@ -1,8 +1,10 @@
 import { ReleaseWriter } from "../core/ReleaseWriter";
 import { rita, username } from "../App";
+import { isOldMessage } from "../utils/datetime";
 
 rita.hears(/hey rita,.*post .*(it|this)/gim, async (ctx) => {
   if (ctx.update.message.from.username != username) return;
+  if (isOldMessage(ctx.update.message.date)) return;
 
   await ctx.reply("Kashikomarimashita, kanchou-sama", {
     reply_to_message_id: ctx.update.message.message_id,
