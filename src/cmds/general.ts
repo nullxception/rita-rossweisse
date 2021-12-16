@@ -1,9 +1,18 @@
 import { rita, username } from "../App";
 import { isOldMessage } from "../utils/datetime";
 
-rita.start((ctx) => {
+rita.start(async (ctx) => {
+  if (isOldMessage(ctx.message.date)) return;
   const firstName = ctx.message.from.first_name;
-  ctx.reply(`Okaerinasai, ${firstName}-sama`);
+  const chat = await ctx.getChat();
+  if (chat.type != "private") return;
+
+  try {
+    ctx.reply(`Okaerinasai, ${firstName}-sama`);
+  } catch (error) {
+    ctx.leaveChat();
+    console.error(error);
+  }
 });
 
 rita.hears(/hey rita,.*(a.+|)r.*(y.+|)u ther/gim, async (ctx) => {
