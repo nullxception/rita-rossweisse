@@ -16,11 +16,11 @@ export const PostDataRelease: React.FC<TemplateProps> = ({
   return (
     <>
       <br />
-      <b>DerpFest 12 Shion</b> | <b>Android 12</b>
+      <b>DerpFest 12 Shion</b> | <b> Poco X3 Pro</b> | <b>Official</b>
       <br />
-      Build {dateNow}
+      <b>Build</b> {dateNow}
       <br />
-      By @fryevia x @nullxception
+      <b>By</b> @fryevia x @nullxception
       <br />
       <br />
       <Changelogs data={data} />
@@ -36,6 +36,7 @@ export const PostDataRelease: React.FC<TemplateProps> = ({
       <br />• GApps Included
       <br />• SELinux Enforced
       <br />• SafetyNet Passed by default (non-root)
+      <br />• <a href="https://t.me/ChaldeaFuckFest">Support Chat</a>
       <br />
       <br />
       #StayDerped

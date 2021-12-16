@@ -16,11 +16,11 @@ export const PostDataCI: React.FC<TemplateProps> = ({
   return (
     <>
       <br />
-      <b>DerpFest 12 Shion</b> | <b>CI Build</b>
+      <b>DerpFest 12 Shion</b> | <b> Poco X3 Pro</b> | <b>CI</b>
       <br />
-      Build {dateNow}
+      <b>Build</b> {dateNow}
       <br />
-      By @fryevia x @nullxception
+      <b>By</b> @fryevia x @nullxception
       <br />
       <br />
       <Changelogs data={data} />
