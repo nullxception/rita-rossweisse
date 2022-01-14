@@ -3,8 +3,13 @@ import { TemplateProps } from "../../core/TemplateProps";
 import { UrlType } from "../../core/type/UrlType";
 
 export const Changelogs = ({ data }: TemplateProps) => {
-  if (data.changelogs.length == 0 && data.urlOf(UrlType.Gist) === undefined)
-    return <></>;
+  const hasGist = data.urlOf(UrlType.Gist) != undefined;
+  const hasChangelog = data.changelogs.length > 0;
+  const url = hasGist
+    ? data.urlOf(UrlType.Telegraph)
+    : data.urlOf(UrlType.Gist);
+  const hasUrl = (url?.length ?? 0) > 1;
+  if (!hasChangelog && !hasUrl) return <></>;
 
   return (
     <>
@@ -16,14 +21,16 @@ export const Changelogs = ({ data }: TemplateProps) => {
           <br />
         </>
       ))}
-      {data.changelogs.length > 0 ? (
+      {hasChangelog && hasUrl ? (
         <>
-          • Full changelog at <a href={data.urlOf(UrlType.Gist)}>Gist</a>
+          • Full changelog at <a href={url}>here</a>
+        </>
+      ) : hasUrl ? (
+        <>
+          • <a href={url}>{hasGist ? "Gist" : "Telegraph"}</a>
         </>
       ) : (
-        <>
-          • <a href={data.urlOf(UrlType.Gist)}>Gist</a>
-        </>
+        <></>
       )}
     </>
   );

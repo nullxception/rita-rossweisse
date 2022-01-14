@@ -15,6 +15,8 @@ export class ChatUrl {
       type = UrlType.Sourceforge;
     } else if (this.url.match(/\/\/gist.git/gm)) {
       type = UrlType.Gist;
+    } else if (this.url.match(/\/\/telegra.ph/gm)) {
+      type = UrlType.Telegraph;
     } else {
       type = UrlType.Unknown;
     }
