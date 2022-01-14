@@ -14,7 +14,7 @@ export const rita = new Telegraf(token);
 // Commands
 require("./cmds/general");
 require("./cmds/releasepost");
-require("./cmds/mentionkanchou");
+// require("./cmds/mentionkanchou");
 
 // Start rita
 rita.launch();
