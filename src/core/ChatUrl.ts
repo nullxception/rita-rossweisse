@@ -13,8 +13,8 @@ export class ChatUrl {
       type = UrlType.Gdrive;
     } else if (this.url.match(/\/\/sourceforg/gm)) {
       type = UrlType.Sourceforge;
-    } else if (this.url.match(/\/\/gist.git/gm)) {
-      type = UrlType.Gist;
+    } else if (this.url.match(/githubusercontent/gm)) {
+      type = UrlType.GitHub;
     } else if (this.url.match(/\/\/telegra.ph/gm)) {
       type = UrlType.Telegraph;
     } else {

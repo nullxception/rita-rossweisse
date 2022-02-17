@@ -1,5 +1,5 @@
 export enum UrlType {
-  Gist,
+  GitHub,
   Telegraph,
   Gdrive,
   Sourceforge,
